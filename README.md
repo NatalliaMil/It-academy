@@ -1,1 +1,1 @@
-# It-academy
+# It-Academy
