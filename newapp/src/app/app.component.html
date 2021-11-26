@@ -1,2 +1,2 @@
 <button (click)="buttonPressed()">Press me, please</button>
-<p>{{ msg }}</p>
+<p *ngFor="let msg of items">{{ msg }}</p>

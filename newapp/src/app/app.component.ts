@@ -7,12 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'newapp';
+  items: string[] = [];
   msg: string;
   constructor() {
     this.msg = '';
   }
   buttonPressed() {
     this.msg = 'You pressed me!!!';
-    return this.msg;
+    return this.items.push(this.msg);
   }
 }
