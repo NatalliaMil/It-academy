@@ -13,4 +13,6 @@ export class AppComponent {
   buttonPressed() {
     return this.items.push(this.msg);
   }
+  name: string = 'Александр';
+  message: string = 'Мой дополнительный компонент синего цвета';
 }
