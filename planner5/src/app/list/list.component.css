@@ -1,0 +1,13 @@
+ul {
+  color: rebeccapurple;
+  font-size: 20px;
+}
+app-element-list {
+  line-height: 1.5;
+}
+
+button {
+  background: rgb(155, 125, 185);
+  margin: 15px;
+  font-size: 15px;
+}
