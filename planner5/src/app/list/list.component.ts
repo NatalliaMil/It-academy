@@ -10,4 +10,7 @@ export class ListComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+  buttonDelete() {
+    this.list.shift();
+  }
 }
