@@ -22,18 +22,18 @@ export class AppComponent {
     const url = `${domain}${endPointAllCities}${APIKey}`;
 
     this.http.get(url).subscribe((data: any) => {
-      this.cities = data['data'];
+      this.cities = data.data.map((element: any) => element.city);
     });
   }
 
-  showWeather() {
+  showWeather(city: any) {
     this.weatherForm = true;
     const domain = 'http://api.airvisual.com';
     const endPointCity = '/v2/city';
     const APIKey = '70cf142d-93ae-47b2-a378-9ebdb2b51916';
     const urlCity = `${domain}${endPointCity}`;
     const APIParams = {
-      city: '',
+      city: city,
       state: 'California',
       country: 'USA',
       key: APIKey,
