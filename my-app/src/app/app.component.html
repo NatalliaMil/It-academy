@@ -1,11 +1,17 @@
-<div class="weather" *ngIf="weatherForm">Temperature now: {{ weather }} ℃</div>
-<ul>
-  <li *ngFor="let city of cities">
-    <button class="btnShowWeather" (click)="showWeather(city)">
-      {{ city }}
-    </button>
-  </li>
-  <button class="btnShowCities" (click)="showCities()">
-    Show all cities in California
-  </button>
-</ul>
+<div class="container">
+  <div>
+    <ul>
+      <li *ngFor="let city of cities">
+        <button class="btnShowWeather" (click)="showWeather(city)">
+          {{ city }}
+        </button>
+      </li>
+      <button class="btnShowCities" (click)="showCities()">
+        Show all cities in California
+      </button>
+    </ul>
+  </div>
+  <div class="weather" *ngIf="weatherForm">
+    <p>Temperature now: {{ weather }} ℃</p>
+  </div>
+</div>

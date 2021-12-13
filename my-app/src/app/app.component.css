@@ -8,11 +8,26 @@
   background: linear-gradient(180deg, #4b91f7 0%, #367af6 100%);
   background-origin: border-box;
 }
+ul {
+  columns: 5;
+}
+
 .btnShowWeather {
   border: none;
 }
 
+.container {
+  display: flex;
+  justify-content: space-around;
+}
 .weather {
+  width: 200px;
+  height: 200px;
+  background-color: cornflowerblue;
+  display: flex;
+  align-items: center;
+}
+.weather p {
+  margin: 0 auto;
   font-family: "Roboto", sans-serif;
-  margin: 30px;
 }
