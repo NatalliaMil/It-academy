@@ -33,7 +33,7 @@ export class AppComponent {
     const APIKey = '70cf142d-93ae-47b2-a378-9ebdb2b51916';
     const urlCity = `${domain}${endPointCity}`;
     const APIParams = {
-      city: city,
+      city,
       state: 'California',
       country: 'USA',
       key: APIKey,
@@ -47,6 +47,3 @@ export class AppComponent {
       });
   }
 }
-
-//http://api.airvisual.com/v2/cities?state=California&country=USA&key=70cf142d-93ae-47b2-a378-9ebdb2b51916
-//http://api.airvisual.com/v2/city?city=Alpine&state=California&country=USA&key=70cf142d-93ae-47b2-a378-9ebdb2b51916
