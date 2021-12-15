@@ -1,0 +1,20 @@
+//1. вывести кол-во полных дней между двумя датами
+//2. вывести дату, на начало этой недели
+
+// Задача 1.
+const firstDate = new Date(2021, 10, 15);
+const secondDate = new Date();
+const days = Math.abs(
+  Math.floor(
+    (secondDate.getTime() - firstDate.getTime()) / (1000 * 60 * 60 * 24)
+  )
+);
+console.log(`Прошло ${days} дней/дня со старта курса`);
+
+// Задача 2.
+const today = new Date();
+const currentDay = today.getDay() || 7;
+if (currentDay !== 1) today.setHours(-24 * (currentDay - 1));
+console.log(
+  `Эта неделя началась с ${today.getDate()}.${today.getMonth()}.${today.getFullYear()}`
+);
