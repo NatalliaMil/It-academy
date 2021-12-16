@@ -1,0 +1,15 @@
+.parent {
+  background-color: blueviolet;
+  width: 400px;
+  height: 400px;
+  color: white;
+  font-size: 26px;
+}
+
+.child {
+  background-color: burlywood;
+  width: 200px;
+  height: 200px;
+  color: white;
+  font-size: 20px;
+}
