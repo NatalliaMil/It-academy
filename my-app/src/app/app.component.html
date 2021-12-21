@@ -11,7 +11,5 @@
       </button>
     </ul>
   </div>
-  <div class="weather" *ngIf="weatherForm">
-    <p>Temperature now: {{ weather }} ℃</p>
-  </div>
+  <app-show-weather [weatherForm]="weatherForm"></app-show-weather>
 </div>

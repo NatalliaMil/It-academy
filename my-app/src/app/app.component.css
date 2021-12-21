@@ -20,14 +20,3 @@ ul {
   display: flex;
   justify-content: space-around;
 }
-.weather {
-  width: 200px;
-  height: 200px;
-  background-color: cornflowerblue;
-  display: flex;
-  align-items: center;
-}
-.weather p {
-  margin: 0 auto;
-  font-family: "Roboto", sans-serif;
-}

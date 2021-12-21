@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
+import { WeatherService } from './weather.service';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +11,13 @@ import { map } from 'rxjs';
 export class AppComponent {
   title = 'my-app';
   cities = [];
-  weather = '';
   weatherForm = false;
+  weather = 0;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    public weatherservice: WeatherService
+  ) {}
 
   showCities() {
     const domain = 'http://api.airvisual.com';
@@ -33,7 +37,7 @@ export class AppComponent {
     const APIKey = '70cf142d-93ae-47b2-a378-9ebdb2b51916';
     const urlCity = `${domain}${endPointCity}`;
     const APIParams = {
-      city: city,
+      city,
       state: 'California',
       country: 'USA',
       key: APIKey,
@@ -44,6 +48,7 @@ export class AppComponent {
       .pipe(map((response: any) => response.data.current.weather))
       .subscribe((data: any) => {
         this.weather = data.tp;
+        this.weatherservice.changeWeather(this.weather);
       });
   }
 }
