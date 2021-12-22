@@ -11,7 +11,10 @@ import { Router } from '@angular/router';
 })
 export class CityListComponent implements OnInit {
   cities = [];
-  weather = 0;
+  data = {
+    temperature: 0,
+    city: '',
+  };
   constructor(
     private http: HttpClient,
     public weatherservice: WeatherService,
@@ -42,10 +45,11 @@ export class CityListComponent implements OnInit {
 
     this.http
       .get(urlCity, { params: APIParams })
-      .pipe(map((response: any) => response.data.current.weather))
-      .subscribe((data: any) => {
-        this.weather = data.tp;
-        this.weatherservice.changeWeather(this.weather);
+      .pipe(map((response: any) => response.data))
+      .subscribe((value: any) => {
+        this.data.temperature = value.current.weather.tp;
+        this.data.city = value.city;
+        this.weatherservice.changeWeather(this.data);
       });
   }
 }
