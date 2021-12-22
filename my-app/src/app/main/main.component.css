@@ -8,13 +8,6 @@
   background: linear-gradient(180deg, #4b91f7 0%, #367af6 100%);
   background-origin: border-box;
 }
-ul {
-  columns: 5;
-}
-
-.btnShowWeather {
-  border: none;
-}
 
 .container {
   display: flex;
