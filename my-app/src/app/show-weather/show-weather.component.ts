@@ -8,7 +8,6 @@ import { WeatherService } from '../weather.service';
 })
 export class ShowWeatherComponent implements OnInit {
   weather = 0;
-  @Input() weatherForm = false;
 
   constructor(public weatherservice: WeatherService) {}
 
