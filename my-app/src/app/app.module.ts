@@ -7,10 +7,24 @@ import { ShowWeatherComponent } from './show-weather/show-weather.component';
 import { MainComponent } from './main/main.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 import { CityListComponent } from './city-list/city-list.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, ShowWeatherComponent, MainComponent, NotFoundPageComponent, CityListComponent],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule],
+  declarations: [
+    AppComponent,
+    ShowWeatherComponent,
+    MainComponent,
+    NotFoundPageComponent,
+    CityListComponent,
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    NgSelectModule,
+    FormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
