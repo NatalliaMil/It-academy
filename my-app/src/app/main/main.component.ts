@@ -20,6 +20,7 @@ export class MainComponent implements OnInit {
   windSpeed = 0;
   atmospherePressure = 0;
   city = '';
+  nameIcon = '';
   showTemperature = false;
   constructor(private http: HttpClient, private router: Router) {}
   ngOnInit() {
@@ -61,14 +62,12 @@ export class MainComponent implements OnInit {
       this.cities = data.data.map((element: any) => element.city);
     });
   }
-  showWeather() {
-    if (
-      this.selectedCity !== '' &&
-      this.selectedState !== '' &&
-      this.selectedCountry !== ''
-    )
-      this.showTemperature = true;
-    alert('Chose a city!');
+  showWeather(): any {
+    this.selectedCity !== '' &&
+    this.selectedState !== '' &&
+    this.selectedCountry !== ''
+      ? (this.showTemperature = true)
+      : alert('Chose a city!');
     const domain = 'http://api.airvisual.com';
     const endPointCity = '/v2/city';
     const APIKey = '70cf142d-93ae-47b2-a378-9ebdb2b51916';
@@ -89,6 +88,8 @@ export class MainComponent implements OnInit {
         this.windSpeed = value.current.weather.ws;
         this.atmospherePressure = value.current.weather.pr;
         this.city = value.city;
+        this.nameIcon = value.current.weather.ic;
+        console.log(this.nameIcon);
       });
   }
 }
