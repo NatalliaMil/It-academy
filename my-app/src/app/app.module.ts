@@ -9,6 +9,7 @@ import { NotFoundPageComponent } from './not-found-page/not-found-page.component
 import { CityListComponent } from './city-list/city-list.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
+import { ChangeDayPipe } from './change-day.pipe';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     MainComponent,
     NotFoundPageComponent,
     CityListComponent,
+    ChangeDayPipe,
   ],
   imports: [
     BrowserModule,
