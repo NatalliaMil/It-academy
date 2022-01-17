@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
+import { ImageService } from '../image.service';
 
 @Component({
   selector: 'app-main',
@@ -9,6 +10,8 @@ import { map } from 'rxjs';
   styleUrls: ['./main.component.css'],
 })
 export class MainComponent implements OnInit {
+  domain = 'http://api.airvisual.com';
+  APIKey = '&key=70cf142d-93ae-47b2-a378-9ebdb2b51916';
   countries = [];
   selectedCountry = '';
   state = [];
@@ -22,12 +25,16 @@ export class MainComponent implements OnInit {
   city = '';
   nameIcon = '';
   showTemperature = false;
-  constructor(private http: HttpClient, private router: Router) {}
+  imageToShow: any;
+
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    public imageService: ImageService
+  ) {}
   ngOnInit() {
-    const domain = 'http://api.airvisual.com';
     const endPointAllCountries = '/v2/countries?';
-    const APIKey = '&key=70cf142d-93ae-47b2-a378-9ebdb2b51916';
-    const url = `${domain}${endPointAllCountries}${APIKey}`;
+    const url = `${this.domain}${endPointAllCountries}${this.APIKey}`;
 
     this.http.get(url).subscribe((data: any) => {
       this.countries = data.data.map((element: any) => element.country);
@@ -43,35 +50,25 @@ export class MainComponent implements OnInit {
     this.selectedCity = '';
   }
   changeState() {
-    const domain = 'http://api.airvisual.com';
     const endPointState = `/v2/states?country=${this.selectedCountry}`;
-    const APIKey = '&key=70cf142d-93ae-47b2-a378-9ebdb2b51916';
-    const url = `${domain}${endPointState}${APIKey}`;
+    const url = `${this.domain}${endPointState}${this.APIKey}`;
 
     this.http.get(url).subscribe((data: any) => {
       this.state = data.data.map((element: any) => element.state);
     });
   }
   changeCity() {
-    const domain = 'http://api.airvisual.com';
     const endPointAllCities = `/v2/cities?state=${this.selectedState}&country=${this.selectedCountry}`;
-    const APIKey = '&key=70cf142d-93ae-47b2-a378-9ebdb2b51916';
-    const url = `${domain}${endPointAllCities}${APIKey}`;
+    const url = `${this.domain}${endPointAllCities}${this.APIKey}`;
 
     this.http.get(url).subscribe((data: any) => {
       this.cities = data.data.map((element: any) => element.city);
     });
   }
-  showWeather(): any {
-    this.selectedCity !== '' &&
-    this.selectedState !== '' &&
-    this.selectedCountry !== ''
-      ? (this.showTemperature = true)
-      : alert('Chose a city!');
-    const domain = 'http://api.airvisual.com';
+  submit(): any {
     const endPointCity = '/v2/city';
     const APIKey = '70cf142d-93ae-47b2-a378-9ebdb2b51916';
-    const urlCity = `${domain}${endPointCity}`;
+    const urlCity = `${this.domain}${endPointCity}`;
     const APIParams = {
       city: `${this.selectedCity}`,
       state: `${this.selectedState}`,
@@ -91,5 +88,28 @@ export class MainComponent implements OnInit {
         this.nameIcon = value.current.weather.ic;
         console.log(this.nameIcon);
       });
+  }
+  showWeather() {
+    this.selectedCity !== '' &&
+    this.selectedState !== '' &&
+    this.selectedCountry !== ''
+      ? (this.showTemperature = true)
+      : alert('Chose a city!');
+    const urlIcon = `http://openweathermap.org/img/wn/${this.nameIcon}@2x.png`;
+    this.imageService.getImage(urlIcon).subscribe((data) => {
+      this.createImageFromBlob(data);
+    });
+  }
+
+  createImageFromBlob(image: Blob) {
+    let reader = new FileReader();
+
+    reader.addEventListener('load', () => {
+      this.imageToShow = reader.result;
+      console.log(this.imageToShow);
+    });
+    if (image) {
+      reader.readAsDataURL(image);
+    }
   }
 }

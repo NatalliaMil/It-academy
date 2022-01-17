@@ -17,13 +17,15 @@
     [items]="cities"
     [(ngModel)]="selectedCity"
   ></ng-select>
+  <button class="btnShowCities" (click)="submit()">Submit</button>
   <button class="btnShowCities" (click)="showWeather()">
     Show weather in city
   </button>
 </div>
 <div *ngIf="showTemperature" class="weather">
   <p>Weather now in {{ city }}:</p>
-  <img src="https://airvisual.com/images/{{ nameIcon | changeDay }}.png" />
+  <img [src]="imageToShow" />
+
   <p>Temperature: {{ temperature }}℃</p>
   <p>Humidity: {{ humidity }}%</p>
   <p>Wild speed: {{ windSpeed }}m/s</p>
