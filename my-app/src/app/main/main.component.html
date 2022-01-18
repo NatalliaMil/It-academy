@@ -11,13 +11,9 @@
     [items]="state"
     [(ngModel)]="selectedState"
   ></ng-select>
-  <button class="btnShowCities" (click)="changeCity()">Change city</button>
-  <ng-select
-    placeholder="Choose a city"
-    [items]="cities"
-    [(ngModel)]="selectedCity"
-  ></ng-select>
-  <button class="btnShowCities" (click)="submit()">Submit</button>
+  <button class="btnShowCities" (click)="changeCity()">Show first city</button>
+
+  <p>{{ firstCity }}</p>
   <button class="btnShowCities" (click)="showWeather()">
     Show weather in city
   </button>
