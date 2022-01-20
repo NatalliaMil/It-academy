@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { map, switchMap } from 'rxjs';
 import { ImageService } from '../image.service';
+import { fromFetch } from 'rxjs/fetch';
 
 @Component({
   selector: 'app-main',
@@ -37,9 +38,13 @@ export class MainComponent implements OnInit {
     const endPointAllCountries = '/v2/countries?';
     const url = `${this.domain}${endPointAllCountries}${this.APIKey}`;
 
-    this.http.get(url).subscribe((data: any) => {
-      this.countries = data.data.map((element: any) => element.country);
-    });
+    fetch(url)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        this.countries = data.data.map((element: any) => element.country);
+      });
   }
 
   onChange($event: any) {
