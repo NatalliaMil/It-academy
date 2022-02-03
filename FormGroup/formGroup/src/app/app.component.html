@@ -1,1 +1,67 @@
+<div class="container">
+  <form
+    [formGroup]="questionnaire"
+    class="formGroup"
+    (ngSubmit)="submit()"
+    novalidate
+  >
+    <label for="first-name">First Name: </label>
+    <input id="first-name" type="text" formControlName="firstName" />
+    <div
+      class="alert"
+      *ngIf="
+        questionnaire.controls['firstName'].invalid &&
+        questionnaire.controls['firstName'].touched
+      "
+    >
+      This is a required field!
+    </div>
 
+    <label for="last-name">Last Name: </label>
+    <input id="last-name" type="text" formControlName="lastName" />
+    <div
+      class="alert"
+      *ngIf="
+        questionnaire.controls['lastName'].invalid &&
+        questionnaire.controls['lastName'].touched
+      "
+    >
+      This is a required field!
+    </div>
+
+    <label for="age">Age: </label>
+    <input id="age" type="text" formControlName="age" />
+    <div
+      class="alert"
+      *ngIf="
+        questionnaire.controls['age'].invalid &&
+        questionnaire.controls['age'].touched
+      "
+    >
+      This is a required field!
+    </div>
+
+    <div
+      formArrayName="workPlace"
+      class="formArray"
+      *ngFor="let work of workPlace.controls; let i = index"
+    >
+      <label for="work-{{ i }}">Place of work {{ i + 1 }}:</label>
+      <input id="work-{{ i }}" type="text" [formControlName]="i" />
+      <div
+        class="alert"
+        *ngIf="workPlace.controls[i].invalid && workPlace.controls[i].touched"
+      >
+        This is a required field
+      </div>
+    </div>
+    <button class="btnAdd" type="button" (click)="addWorkPlace()">
+      + Add place of work
+    </button>
+
+    <button type="submit" class="btnSubmit" [disabled]="!questionnaire.valid">
+      Submit
+    </button>
+  </form>
+  <p *ngIf="formDataTrue">Form data: {{ formData }}</p>
+</div>
