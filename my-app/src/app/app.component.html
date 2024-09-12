@@ -1,15 +1,1 @@
-<div class="container">
-  <div>
-    <ul>
-      <li *ngFor="let city of cities">
-        <button class="btnShowWeather" (click)="showWeather(city)">
-          {{ city }}
-        </button>
-      </li>
-      <button class="btnShowCities" (click)="showCities()">
-        Show all cities in California
-      </button>
-    </ul>
-  </div>
-  <app-show-weather [weatherForm]="weatherForm"></app-show-weather>
-</div>
+<router-outlet></router-outlet>

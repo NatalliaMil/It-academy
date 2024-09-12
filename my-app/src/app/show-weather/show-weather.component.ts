@@ -7,14 +7,15 @@ import { WeatherService } from '../weather.service';
   styleUrls: ['./show-weather.component.css'],
 })
 export class ShowWeatherComponent implements OnInit {
-  weather = 0;
-  @Input() weatherForm = false;
+  temperature = 0;
+  city = '';
 
   constructor(public weatherservice: WeatherService) {}
 
   ngOnInit(): void {
-    this.weatherservice.weather.subscribe((value) => {
-      this.weather = value;
+    this.weatherservice.subject.subscribe((data) => {
+      this.temperature = data.temperature;
+      this.city = data.city;
     });
   }
 }

@@ -1,0 +1,33 @@
+<div class="container">
+  <ng-select
+    placeholder="Choose a country"
+    [items]="countries"
+    [(ngModel)]="selectedCountry"
+    (change)="onChange($event)"
+  ></ng-select>
+  <button class="btnShowCities" (click)="changeState()">Change state</button>
+  <ng-select
+    placeholder="Choose a state"
+    [items]="state"
+    [(ngModel)]="selectedState"
+  ></ng-select>
+  <button class="btnShowCities" (click)="changeCity()">Change city</button>
+  <ng-select
+    placeholder="Choose a city"
+    [items]="cities"
+    [(ngModel)]="selectedCity"
+  ></ng-select>
+  <button class="btnShowCities" (click)="submit()">Submit</button>
+  <button class="btnShowCities" (click)="showWeather()">
+    Show weather in city
+  </button>
+</div>
+<div *ngIf="showTemperature" class="weather">
+  <p>Weather now in {{ city }}:</p>
+  <img [src]="imageToShow" />
+
+  <p>Temperature: {{ temperature }}℃</p>
+  <p>Humidity: {{ humidity }}%</p>
+  <p>Wild speed: {{ windSpeed }}m/s</p>
+  <p>Atmospherep ressure: {{ atmospherePressure }}hPa</p>
+</div>
