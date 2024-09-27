@@ -1,0 +1,15 @@
+.btnShowCities {
+  margin: 0 auto;
+  padding: 6px 14px;
+  font-family: "Roboto", sans-serif;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  background: linear-gradient(180deg, #4b91f7 0%, #367af6 100%);
+  background-origin: border-box;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+}

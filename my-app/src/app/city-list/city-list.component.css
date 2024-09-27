@@ -1,0 +1,10 @@
+nav {
+  display: flex;
+  justify-content: space-around;
+}
+ul {
+  columns: 5;
+}
+.btnShowWeather {
+  border: none;
+}

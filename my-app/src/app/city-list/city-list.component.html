@@ -1,0 +1,12 @@
+<div class="links">
+  <nav>
+    <a routerLink="">Main</a>
+  </nav>
+</div>
+<ul>
+  <li *ngFor="let city of cities">
+    <button class="btnShowWeather" (click)="showWeather(city)">
+      {{ city }}
+    </button>
+  </li>
+</ul>

@@ -1,13 +1,18 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WeatherService {
-  weather: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  data = {
+    temperature: 0,
+    city: '',
+  };
+  city: any;
+  subject: Subject<any> = new Subject<any>();
   constructor() {}
-  changeWeather(weather: number) {
-    this.weather.next(weather);
+  changeWeather(data: any) {
+    this.subject.next(data);
   }
 }

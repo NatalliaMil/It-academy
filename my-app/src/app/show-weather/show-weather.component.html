@@ -1,3 +1,9 @@
-<div class="weather" *ngIf="weatherForm">
-  <p>Temperature now: {{ weather }} ℃</p>
+<div class="links">
+  <nav>
+    <a routerLink="">Main</a>
+    <a routerLink="/citylist">Back</a>
+  </nav>
+</div>
+<div class="weather">
+  <p>Temperature now in {{ city }}: {{ temperature }} ℃</p>
 </div>
